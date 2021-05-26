@@ -1,0 +1,146 @@
+{
+    "settings": {
+        "index": {
+            "analysis": {
+                "analyzer": {
+                    "normalize": {
+                        "tokenizer": "standard",
+                        "filter": [
+                            "lowercase",
+                            "asciifolding"
+                        ]
+                    },
+                    "autocomplete": {
+                        "tokenizer": "autocomplete",
+                        "filter": [
+                            "lowercase",
+                            "asciifolding"
+                        ]
+                    },
+                    "autocomplete_search": {
+                        "tokenizer": "standard",
+                        "filter": [
+                            "lowercase",
+                            "asciifolding"
+                        ]
+                    }
+                },
+                "tokenizer": {
+                    "autocomplete": {
+                        "type": "edge_ngram",
+                        "min_gram": 2,
+                        "max_gram": 20,
+                        "token_chars": [
+                            "letter",
+                            "digit"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "mappings": {
+        "location": {
+            "properties": {
+                "name": {
+                    "type": "text",
+                    "fields": {
+                        "edge_ngram": {
+                            "type": "text",
+                            "analyzer": "autocomplete",
+                            "search_analyzer": "autocomplete_search"
+                        },
+                        "normalized": {
+                            "type": "text",
+                            "analyzer": "normalize"
+                        }
+                    }
+                },
+                "alternate_names": {
+                    "type": "text",
+                    "fields": {
+                        "edge_ngram": {
+                            "type": "text",
+                            "analyzer": "autocomplete",
+                            "search_analyzer": "autocomplete_search"
+                        },
+                        "normalized": {
+                            "type": "text",
+                            "analyzer": "normalize"
+                        }
+                    }
+                },
+                "ancestor_names": {
+                    "type": "text",
+                    "fields": {
+                        "edge_ngram": {
+                            "type": "text",
+                            "analyzer": "autocomplete",
+                            "search_analyzer": "autocomplete_search"
+                        },
+                        "normalized": {
+                            "type": "text",
+                            "analyzer": "normalize"
+                        }
+                    }
+                },
+                "alternate_ancestor_names": {
+                    "type": "text",
+                    "fields": {
+                        "edge_ngram": {
+                            "type": "text",
+                            "analyzer": "autocomplete",
+                            "search_analyzer": "autocomplete_search"
+                        },
+                        "normalized": {
+                            "type": "text",
+                            "analyzer": "normalize"
+                        }
+                    }
+                },
+                "full_name": {
+                    "type": "text",
+                    "fields": {
+                        "edge_ngram": {
+                            "type": "text",
+                            "analyzer": "autocomplete",
+                            "search_analyzer": "autocomplete_search"
+                        },
+                        "normalized": {
+                            "type": "text",
+                            "analyzer": "normalize"
+                        }
+                    }
+                },
+                "public_name": {
+                    "type": "text",
+                    "fields": {
+                        "edge_ngram": {
+                            "type": "text",
+                            "analyzer": "autocomplete",
+                            "search_analyzer": "autocomplete_search"
+                        },
+                        "normalized": {
+                            "type": "text",
+                            "analyzer": "normalize"
+                        }
+                    }
+                },
+                "country_code_iso": {
+                    "type": "keyword"
+                },
+                "point": {
+                    "type": "geo_point"
+                },
+                "population": {
+                    "type": "long",
+                    "null_value": 0
+                },
+                "parent_population": {
+                    "type": "long",
+                    "null_value": 0
+                }
+            }
+        }
+    }
+}
